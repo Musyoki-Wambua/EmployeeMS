@@ -1,0 +1,20 @@
+[0;1;32m●[0m bluetooth.service - Bluetooth service
+     Loaded: loaded (/lib/systemd/system/bluetooth.service; enabled; vendor preset: enabled)
+     Active: [0;1;32mactive (running)[0m since Wed 2023-11-22 13:18:49 EAT; 37s ago
+       Docs: man:bluetoothd(8)
+   Main PID: 50124 (bluetoothd)
+     Status: "Running"
+      Tasks: 1 (limit: 9209)
+     Memory: 1.8M
+     CGroup: /system.slice/bluetooth.service
+             └─50124 /usr/lib/bluetooth/bluetoothd
+
+Nov 22 13:18:47 Software-Dev systemd[1]: Starting Bluetooth service...
+Nov 22 13:18:49 Software-Dev bluetoothd[50124]: Bluetooth daemon 5.53
+Nov 22 13:18:49 Software-Dev bluetoothd[50124]: Starting SDP server
+Nov 22 13:18:49 Software-Dev systemd[1]: Started Bluetooth service.
+Nov 22 13:18:49 Software-Dev bluetoothd[50124]: Bluetooth management interface 1.21 initialized
+Nov 22 13:18:50 Software-Dev bluetoothd[50124]: [0;1;31m[0;1;39m[0;1;31mFailed to set privacy: Rejected (0x0b)[0m
+Nov 22 13:18:50 Software-Dev bluetoothd[50124]: Endpoint registered: sender=:1.48 path=/MediaEndpoint/A2DPSink/sbc
+Nov 22 13:18:50 Software-Dev bluetoothd[50124]: Endpoint registered: sender=:1.48 path=/MediaEndpoint/A2DPSource/sbc
+Nov 22 13:18:54 Software-Dev bluetoothd[50124]: [0;1;31m[0;1;39m[0;1;31mLoading LTKs timed out for hci0[0m
