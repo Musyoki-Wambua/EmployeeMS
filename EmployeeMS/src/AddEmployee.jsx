@@ -1,6 +1,23 @@
-import React from 'react'
+import React, { useEffect, useState }from 'react';
+import axios from 'axios';
 
 const AddEmployee = () => {
+
+    const [category, setCategory] = useState([]);
+
+  useEffect(() => {
+    axios.get('http://locakhost:3000/auth/category')
+    .then(result => {
+      //console.log(result)
+      if(result.data.Result){
+        setCategory()
+      }else{
+        alert(result.data.Error)
+      }
+    })
+    .catch(err => console.log(err))
+  }, []);
+
   return (
     <div className="d-flex justify-content-center align-items-center mt-3">
       <div className="p-3 rounded w-50 border">
@@ -66,6 +83,12 @@ const AddEmployee = () => {
             <label for="category" className="form-label">
               Category
             </label>
+            <select name="category" id="category" className="form-select"
+                onChange={(e) => setEmployee({...employee, category_id: e.target.value})}>
+              {category.map((cat) => {
+                return <option value={cat.id}>{cat.name}</option>;
+              })}
+            </select>
           </div>
           <div className="col-12 mb-3">
             <label className="form-label" for="inputGroupFile01">
@@ -76,6 +99,7 @@ const AddEmployee = () => {
               className="form-control rounded-0"
               id="inputGroupFile01"
               name="image"
+              onChange={(e) => setEmployee({...employee, image: e.target.files[0]})}
             />
           </div>
           <div className="col-12">
