@@ -24,18 +24,18 @@ const Dashboard = () => {
                         <Link to="/dashboard/employee" 
                         className='nav-lik px-0 align-middle text-white'>
                             <i className='fs-4 bi-people ms-2'></i>
-                            <span className='ms-2 d-none d-sm-inline'>Manage Employee</span>
+                            <span className='ms-2 d-none d-sm-inline'>Manage Employees</span>
                             </Link>
                     </li>
                     <li className='w-100'>
-                        <Link to="/dashboard/employee"
+                        <Link to="/dashboard/category"
                         className='nav-link px-0 align-middle text-white'>
                             <i className='fs-4 bi-columnsms-2'></i>
                             <span className='ms-2 d-none d-sm-inline'>Category</span>
                             </Link>
                     </li>
                     <li className='w-100'>
-                        <Link to="/dashboard/prifile"
+                        <Link to="/dashboard/profile"
                         className='nav-link px-0 align-middle text-white'>
                             <i className='fs-4 bi-columnsms-2'></i>
                             <span className='ms-2 d-none d-sm-inline'>Profile</span>
