@@ -154,4 +154,9 @@ router.get('/admin_records', (req, res) => {
         return res.json({Status: true, Result: result})
     })
 })
+
+router.get('/logout', (req, res) => {
+    reverse.clearCookie('token')
+    return res.json({Status: true})
+})
 export {router as adminRouter }; 

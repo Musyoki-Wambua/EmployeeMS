@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
 
 const Home = () => {
   const [adminTotal, setAdminTotal] = useState(0);
@@ -83,7 +82,7 @@ const Home = () => {
           <div className="d-flex justify-content-between">
             <div className="text-center pb-1">
               <h5>Total</h5>
-              <h5>{salaryTotal} </h5>
+              <h5>Ksh {salaryTotal} </h5>
             </div>
           </div>
         </div>
