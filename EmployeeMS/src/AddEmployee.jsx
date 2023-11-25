@@ -38,7 +38,7 @@ const AddEmployee = () => {
     <div className="d-flex justify-content-center align-items-center mt-3">
       <div className="p-3 rounded w-50 border">
         <h3 className="text-center">Add Employee</h3>
-        <form className="row g-1" onSubmi={handleSubmit} >
+        <form className="row g-1" onSubmit={handleSubmit} >
           <div className="col-12">
             <label htmlFor="inputName" className="form-label">
               Name
@@ -105,7 +105,7 @@ const AddEmployee = () => {
               Category
             </label>
             <select name="category" id="category" className="form-select"
-                onChange={(e) => setEmployee({...employee, category: e.target.value})}>
+                onChange={(e) => setEmployee({...employee, category_id: e.target.value})}>
               {category.map((cat) => {
                 return <option value={cat.id}>{cat.name}</option>;
               })}

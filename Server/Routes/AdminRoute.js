@@ -1,6 +1,7 @@
 import express from 'express'
 import con from '../utils/db.js'
 import jwt from 'jsonwebtoken'
+import bycrpt from 'bycrpt'
 
 const router = express.Router();
 
@@ -36,5 +37,26 @@ router.post('add_category', (req, res)=> {
         if(err) return res.json({Status: false, Error: "Query Error"})
         return res.json({Status: true})
     })
+})
+
+router.post('/add_employee', (req, res) => {
+    const sql = "INSERT INTO employee (name, email, address, salary. image, categoty_id) VALUES (?)";
+    bcrypt.hash(req.body.password, 10, (err, hash) => {
+        if(err) return res.json({Status: false, Error: "Query Error"})
+        const values = [
+            req.body.name, 
+            req.body.email,
+            hash,
+            req.body.address, 
+            req.body.salary, 
+            req.body.image, 
+            req.body.category_id,
+        ]
+        con.query(sql, [values], (err, result) => {
+            if(err) return res.json({Status: false, Error: "Query Error"})
+            return res.json({Status: true})
+        })
+    })
+
 })
 export {router as adminRouter }; 
