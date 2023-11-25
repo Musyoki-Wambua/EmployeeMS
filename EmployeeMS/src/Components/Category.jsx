@@ -24,15 +24,23 @@ const Category = () => {
             <h3>Category List</h3>
         </div>
         <Link to="/dashboard/add_category" className='btn  btn-success' >Add Category</Link>
-        <div>
-          <table>
+        <div className='mt-3'>
+          <table className='table'>
             <thead>
               <tr>
                 <th>Name</th>
               </tr>
             </thead>
             <tbody>
-
+              {
+                category.map(cat => (
+                  <tr>
+                    <td>
+                      {cat.name}
+                    </td>
+                  </tr>
+                ))
+              }
             </tbody>
           </table>
         </div>
