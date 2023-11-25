@@ -1,5 +1,7 @@
 import React, { useEffect, useState }from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom'
+
 
 const AddEmployee = () => {
     const[employee, setEmployee] = useState({
@@ -8,18 +10,19 @@ const AddEmployee = () => {
         password: '',
         salary: '',
         address: '',
-        category: '',
+        category_id: '',
         image: ''
     })
 
     const [category, setCategory] = useState([]);
+    const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get('http://locakhost:3000/auth/category')
+    axios.get('http://locakhost:3000/auth/add_employee', formData)
     .then(result => {
       //console.log(result)
-      if(result.data.Result){
-        setCategory()
+      if(result.data.Status){
+        navigate('/dashboard/employee')
       }else{
         alert(result.data.Error)
       }
@@ -29,6 +32,17 @@ const AddEmployee = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const formData = new FormData();
+    formData.append('name', employee.name);
+    formData.append('email', employee.email);
+    formData.append('password', employee.password);
+    formData.append('salary', employee.salary);
+    formData.append('address', employee.address);
+    formData.append('category_id', employee.category_id);
+    formData.append('image', employee.image);
+
+
+
     axios.post('http://localhost:3000/auth/add_employee', employee)
     .then(result => console.log(result.data))
     .catch(err => console.log(err))
