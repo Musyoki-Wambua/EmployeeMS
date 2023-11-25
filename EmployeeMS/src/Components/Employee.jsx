@@ -1,20 +1,22 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import axios from 'axios' 
+import axios from "axios";
 
 const Employee = () => {
   const [employee, setEmployee] = useState();
 
   useEffect(() => {
-    axios.get('http://localhost:3000/auth/employee', employee)
-    .then(result => {
-      if(result.data.Status){
-        setEmployee(result.data.Result);
-      }else{
-        alert(result.data.Error)
-      }
-    }).catch(err => console.log(err))
-  }, [])
+    axios
+      .get("http://localhost:3000/auth/employee")
+      .then((result) => {
+        if (result.data.Status) {
+          setEmployee(result.data.Result);
+        } else {
+          alert(result.data.Error);
+        }
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
   return (
     <div className="px-5 mt-3">
@@ -25,34 +27,37 @@ const Employee = () => {
         Add Employee
       </Link>
       <div className="mt-3">
-        <table className='table'>
-            <theacd>
+        <table className="table">
+          <theacd>
+            <tr>
+              <th>Name</th>
+              <th>Image</th>
+              <th>Email</th>
+              <th>Address</th>
+              <th>Salary</th>
+            </tr>
+          </theacd>
+          <tbody>
+            {employee.map((e) => (
               <tr>
-                <th>Name</th>
-                <th>Image</th>
-                <th>Email</th>
-                <th>Address</th>
-                <th>Salary</th>
+                <td>{e.name}</td>
+                <td>
+                  <img
+                    src={"http://localhost:3000/Images/" + e.image}
+                    className="employee_image"
+                  />{" "}
+                </td>
+                <td>{e.email}</td>
+                <td>{e.address}</td>
+                <td>{e.salary}</td>
+                <td>
+                  <button>Edit</button>
+                  <button>Delete</button>
+                </td>
               </tr>
-            </theacd>
-            <tbody>
-              {
-                employee.map(e => (
-                  <tr>
-                    <td>{e.name}</td>
-                    <td><img src={'http://localhost:3000/Images/' + e.image} className="employee_image" /> </td>
-                    <td>{e.email}</td>
-                    <td>{e.address}</td>
-                    <td>{e.salary}</td>
-                    <td>
-                      <button>Edit</button>
-                      <button>Delete</button>
-                    </td>
-                  </tr>
-                ))
-              }
-            </tbody>
-          </table>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
   );
