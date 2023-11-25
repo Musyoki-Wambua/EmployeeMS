@@ -6,8 +6,9 @@ import { useNavigate } from 'react-router-dom'
 const Login = () => {
   const[values, setValues] = useState({
     email: '',
-    password:''
-  })
+    password: ''
+  }); 
+
   const[error, setError] = useState(null)
   const navigate = useNavigate()
   axios.defaults.withCredentials = true;
@@ -54,5 +55,4 @@ const Login = () => {
   )
 }
 
-
-export default Login
+export default Login;

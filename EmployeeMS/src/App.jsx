@@ -16,7 +16,7 @@ function App() {
     <Routes>
         <Route path='/auth/adminlogin' element={<Login/>}></Route>
         <Route path='/dashboard' element={<Dashboard/>}></Route>
-        <Route path='' element={ <Home />}></Route>
+        <Route path='/' element={ <Home />}></Route>
         <Route path='/dashboard/employee' element={ <Employee />}></Route>
         <Route path='/dashboard/category' element={ <Category />}></Route>
         <Route path='/dashboard/profile' element={ <Profile />}></Route>
@@ -26,4 +26,4 @@ function App() {
   )
 }
 
-export default App
+export default App;

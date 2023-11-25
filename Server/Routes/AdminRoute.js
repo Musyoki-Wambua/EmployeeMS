@@ -20,6 +20,16 @@ router.post('/adminlogin', (req, res) => {
     })    
 })
 
+router.get('/category', (req, res) => {
+    const sql = "INSERT INTO category ('name') VALUES (?)"
+    con.query(sql, [req.body.category], (err, result) => {
+        if(err){
+            return res.json({Status: false, Error: "Query Error"})
+        }else 
+        return res.json({Status: true, Result: result})
+    });
+});
+
 router.post('add_category', (req, res)=> {
     const sql = "INSERT INTO category ('name') VALUES (?)"
     con.query(sql, [res.body.category], (err, result) => {
