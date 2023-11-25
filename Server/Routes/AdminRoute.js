@@ -1,7 +1,7 @@
 import express from 'express'
 import con from '../utils/db.js'
 import jwt from 'jsonwebtoken'
-import bycrpt from 'bycrpt'
+import bcrypt from 'bcrypt'
 import multer from 'multer'
 import path from 'path'
 
@@ -72,6 +72,15 @@ router.post('/add_employee', upload.single('image'), (req, res) => {
             return res.json({Status: true})
         })
     })
-
 })
+
+router.get('/employee', (req, res) => {
+    const sql = "INSERT INTO employee ('name') VALUES (?)"
+    con.query(sql, [req.body.employee], (err, result) => {
+        if(err){
+            return res.json({Status: false, Error: "Query Error"})
+        }else 
+        return res.json({Status: true, Result: result})
+    });
+});
 export {router as adminRouter }; 

@@ -21,13 +21,14 @@ const AddEmployee = () => {
     axios.get('http://locakhost:3000/auth/add_employee', formData)
     .then(result => {
       //console.log(result)
-      if(result.data.Status){
-        navigate('/dashboard/employee')
+      if(result.data.Result){
+       setCategory()
       }else{
         alert(result.data.Error)
       }
     })
     .catch(err => console.log(err))
+}
   }, []);
 
   const handleSubmit = (e) => {
@@ -44,9 +45,16 @@ const AddEmployee = () => {
 
 
     axios.post('http://localhost:3000/auth/add_employee', employee)
-    .then(result => console.log(result.data))
-    .catch(err => console.log(err))
-  }
+    .then(result => {
+        //console.log(result.data)
+        if(result.data.Status){
+            navigate('/dashboard/employee')
+          }else{
+            alert(result.data.Error)
+          }
+        })
+        .catch(err => console.log(err))
+    }
 
   return (
     <div className="d-flex justify-content-center align-items-center mt-3">

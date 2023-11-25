@@ -8,9 +8,9 @@ app.use(cors({
     methods: ['GET', 'POST', 'PUT'], 
     credentials: true
 }))
-app.use(express.json())
-app.use('/auth', adminRouter)
-
+app.use(express.json());
+app.use('/auth', adminRouter);
+app.use(express.static('Public'));
 app.listen(3000, ()   => {
     console.log("Server is Running")
 })
