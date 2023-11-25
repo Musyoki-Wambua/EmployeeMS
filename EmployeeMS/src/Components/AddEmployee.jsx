@@ -12,23 +12,21 @@ const AddEmployee = () => {
         address: '',
         category_id: '',
         image: ''
-    })
+    });
 
     const [category, setCategory] = useState([]);
     const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get('http://locakhost:3000/auth/add_employee', formData)
+    axios.get('http://locakhost:3000/auth/category')
     .then(result => {
       //console.log(result)
-      if(result.data.Result){
-       setCategory()
+      if(result.data.Status){
+       setCategory(result.data.Result)
       }else{
         alert(result.data.Error)
       }
-    })
-    .catch(err => console.log(err))
-}
+    }).catch(err => console.log(err))
   }, []);
 
   const handleSubmit = (e) => {
@@ -44,7 +42,7 @@ const AddEmployee = () => {
 
 
 
-    axios.post('http://localhost:3000/auth/add_employee', employee)
+    axios.post('http://localhost:3000/auth/add_employee', formData)
     .then(result => {
         //console.log(result.data)
         if(result.data.Status){
