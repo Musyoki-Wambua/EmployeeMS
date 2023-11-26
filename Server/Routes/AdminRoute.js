@@ -14,11 +14,11 @@ router.post('/adminlogin', (req, res) => {
         if(err) return res.json({loginStatus: false, Error: "Query Error"})
         if(result.length > 0){
             const email = result[0].email;
-            const token = jwt.sign({role: "admin", email: email}, "jwt_secret_key", {expiresIn: '1d'});
+            const token = jwt.sign({role: "admin", email: email, id: result[0].id}, "jwt_secret_key", {expiresIn: '1d'});
             res.cookie('token', token)
             return res.json({loginStatus:true});
         }else {
-            return res.json({ loginStatus: false, Error: "Wrong e,ail or password" })
+            return res.json({ loginStatus: false, Error: "Wrong email or password" })
         }
     })    
 })
@@ -84,7 +84,7 @@ router.get('/employee', (req, res) => {
     });
 });
 
-router.get('/employee' + id, (req, res) => {
+router.get('/employee/:id', (req, res) => {
     const id = req.params.id;
     const sql = "SELECT * FROM employee WHERE id = ?"
     con.query(sql, [id], (err, result) => {
@@ -114,7 +114,7 @@ router.put('/edit_employee/:id', (req, res) => {
     });
 })
 
-router.delete('/delete_employee/:id', (res, res) => {
+router.delete('/delete_employee/:id', (req, res) => {
     const id = req.params.id;
     const sql = "delete from employee where id = ?"
     con.query(sql, [id], (err, result) => {
@@ -159,4 +159,5 @@ router.get('/logout', (req, res) => {
     reverse.clearCookie('token')
     return res.json({Status: true})
 })
+
 export {router as adminRouter }; 
