@@ -99,7 +99,7 @@ const Home = () => {
           <tbody>
             {
               admins.map(ad => (
-                <tr>
+                <tr key={ad.id}>
                   <td>{ad.email}</td>
                   <td>
                   <button  className="btn btn-info btn-sm me-2">Edit</button>

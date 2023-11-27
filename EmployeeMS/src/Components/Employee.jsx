@@ -1,17 +1,16 @@
-import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 
 const Employee = () => {
   const [employee, setEmployee] = useState();
-  const navigate = useNavigate(); 
 
   useEffect(() => {
-    axios
-      .get("http://localhost:3000/auth/employee")
+    axios.get("http://localhost:3000/auth/employee")
       .then((result) => {
         if (result.data.Status) {
+          console.log(employee)
           setEmployee(result.data.Result);
         } else {
           alert(result.data.Error);
@@ -53,7 +52,7 @@ const Employee = () => {
           </theacd>
           <tbody>
             {employee.map((e) => (
-              <tr>
+              <tr key={e.id}>
                 <td>{e.name}</td>
                 <td>
                   <img

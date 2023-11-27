@@ -1,7 +1,7 @@
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Login from './Components/Login'
-import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Dashboard from './Components/Dashboard'
 import Home from './Components/Home'
 import Employee from './Components/Employee'
@@ -13,9 +13,6 @@ import EditEmployee from './Components/EditEmployee'
 import Start from './Components/Start'
 import EmployeeLogin from './Components/EmployeeLogin'
 import EmployeeDetail from './Components/EmployeeDetail'
-import { useEffect } from 'react'
-import axios from 'axios'
-
 
 function App() {
 
